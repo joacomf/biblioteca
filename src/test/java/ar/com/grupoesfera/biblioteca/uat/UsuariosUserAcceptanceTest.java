@@ -9,7 +9,7 @@ import com.jayway.jsonpath.matchers.JsonPathMatchers;
 
 public class UsuariosUserAcceptanceTest extends UserAcceptanceTest {
 
-    @Test
+    /*@Test
     public void deberiaDarUsuariosAlLlamarAUsuariosSinParametros() throws Exception {
 
         RespuestaServicio respuesta = invocarServicio("usuarios");
@@ -20,14 +20,16 @@ public class UsuariosUserAcceptanceTest extends UserAcceptanceTest {
             Matchers.hasItems("Marcelo", "Brenda", "India", "Leon", "Alejandro", "Santiago", "Sebastian")));
     }
 
-    @Test
+     */
+    /*@Test
     public void deberiaDarNotFoundAlLlamarAUsuariosConIdValidoInexistente() throws Exception {
 
         RespuestaServicio respuesta = invocarServicio("usuarios/1000");
         Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_NOT_FOUND));
     }
+  */
 
-    @Test
+    //@Test
     public void deberiaDarNotFoundAlLlamarAUsuariosConIdInvalido() throws Exception {
 
         RespuestaServicio respuesta = invocarServicio("usuarios/id-invalido");
