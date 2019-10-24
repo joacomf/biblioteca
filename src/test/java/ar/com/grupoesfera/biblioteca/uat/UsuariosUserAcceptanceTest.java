@@ -27,8 +27,11 @@ public class UsuariosUserAcceptanceTest extends UserAcceptanceTest {
         RespuestaServicio respuesta = invocarServicio("usuarios/1000");
         Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_NOT_FOUND));
     }
+<<<<<<< HEAD
 
-
+=======
+>>>>>>> 1650f0f8f2152d8dfa292d76a44ab8950c8d36e8
+d
     //@Test
     public void deberiaDarNotFoundAlLlamarAUsuariosConIdInvalido() throws Exception {
 
