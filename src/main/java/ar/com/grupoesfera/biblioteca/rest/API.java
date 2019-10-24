@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import ar.com.grupoesfera.biblioteca.modelo.Usuario;
 import ar.com.grupoesfera.biblioteca.repo.BaseDeLibros;
 import ar.com.grupoesfera.biblioteca.repo.BaseDePrestamos;
 import ar.com.grupoesfera.biblioteca.repo.BaseDeUsuarios;
@@ -76,8 +77,10 @@ public class API {
     @Path("/usuarios/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response obtenerUsuarioPorId(@PathParam("id") Long idUsuario) {
-        
-        return Response.status(Status.NOT_IMPLEMENTED).build();
+
+        Usuario usuarioBuscado = usuarios.obtenerTodos().stream().filter(usuario -> usuario.getId().equals(idUsuario)).findFirst().orElse(null);
+        return usuarioBuscado == null ? Response.status(Status.NOT_FOUND).build() : Response.status(Status.FOUND).build();
+
     }
 
     @GET
