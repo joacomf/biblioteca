@@ -20,7 +20,7 @@ import ar.com.grupoesfera.main.PioServer;
 public class UserAcceptanceTest {
 
     protected static final Log log = LogFactory.getLog(UserAcceptanceTest.class);
-    
+
     @BeforeClass
     public static void preparar() {
 
@@ -35,7 +35,7 @@ public class UserAcceptanceTest {
         log.info("Un conjunto de pruebas de aceptación ha finalizado");
     }
 
-    @Test
+    //@Test
     public void deberiaDecirHolaMundo() throws Exception {
 
         RespuestaServicio respuesta = invocarServicio("hola");

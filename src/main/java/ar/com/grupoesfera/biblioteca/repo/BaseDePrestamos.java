@@ -12,4 +12,6 @@ public class BaseDePrestamos {
         
         return App.instancia().obtenerEntityManager().createQuery("select p from Prestamo p").getResultList();
     }
+
+
 }
