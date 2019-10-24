@@ -9,7 +9,7 @@ import com.jayway.jsonpath.matchers.JsonPathMatchers;
 
 public class UsuariosUserAcceptanceTest extends UserAcceptanceTest {
 
-    //@Test
+    /*@Test
     public void deberiaDarUsuariosAlLlamarAUsuariosSinParametros() throws Exception {
 
         RespuestaServicio respuesta = invocarServicio("usuarios");
@@ -20,6 +20,7 @@ public class UsuariosUserAcceptanceTest extends UserAcceptanceTest {
             Matchers.hasItems("Marcelo", "Brenda", "India", "Leon", "Alejandro", "Santiago", "Sebastian")));
     }
 
+     */
     /*@Test
     public void deberiaDarNotFoundAlLlamarAUsuariosConIdValidoInexistente() throws Exception {
 
