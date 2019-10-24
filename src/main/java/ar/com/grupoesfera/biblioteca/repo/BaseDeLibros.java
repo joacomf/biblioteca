@@ -24,18 +24,21 @@ public class BaseDeLibros {
         } else {
             throw new Exception("Libro no encontrado");
         }
+    }
 
     public List<Libro> obtenerLibrosPorAutor(String autor) {
-
-        return obtenerTodos().stream().filter(l -> l.getAutor().contains(autor)).collect(Collectors.toList());
-        //return App.instancia().obtenerEntityManager().createQuery("select l from Libro l where l.autor Like '%" + autor + "%'").getResultList();
-
-
+        return obtenerTodos()
+                .stream()
+                .filter(l -> l.getAutor()
+                        .contains(autor))
+                .collect(Collectors.toList());
     }
 
     public List<Libro> obtenerLibrosPorTitulo (String titulo) {
-
-        return obtenerTodos().stream().filter(l -> l.getTitulo().contains(titulo)).collect(Collectors.toList());
-        //return App.instancia().obtenerEntityManager().createQuery("select l from Libro l where l.titulo Like '%" + titulo + "%'").getResultList();
+        return obtenerTodos()
+                .stream()
+                .filter(l -> l.getTitulo()
+                        .contains(titulo))
+                .collect(Collectors.toList());
     }
 }

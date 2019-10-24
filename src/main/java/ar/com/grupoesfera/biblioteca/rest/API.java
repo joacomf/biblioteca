@@ -10,11 +10,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import ar.com.grupoesfera.biblioteca.modelo.Libro;
 import ar.com.grupoesfera.biblioteca.modelo.Usuario;
 import ar.com.grupoesfera.biblioteca.repo.BaseDeLibros;
 import ar.com.grupoesfera.biblioteca.repo.BaseDePrestamos;
 import ar.com.grupoesfera.biblioteca.repo.BaseDeUsuarios;
 import ar.com.grupoesfera.main.App;
+
+import java.util.List;
 
 @Path("/")
 public class API {
@@ -54,15 +57,26 @@ public class API {
     @Path("/libros/autor/{autor}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response obtenerLibrosPorAutor(@PathParam("autor") String autor) {
-        
-        return Response.ok(libros.obtenerLibrosPorAutor(autor)).build();
+        List<Libro> librosBuscados = libros.obtenerLibrosPorAutor(autor);
+
+        if(librosBuscados.size() > 0)
+            return Response.ok(librosBuscados).build();
+        else
+            return Response.status(Status.NOT_FOUND).build();
     }
+
     @GET
     @Path("/libros/titulo/{titulo}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response obtenerLibrosPorTitulo(@PathParam("titulo") String titulo) {
-        
-        return Response.ok(libros.obtenerLibrosPorTitulo(titulo)).build();
+
+        List<Libro> librosBuscados = libros.obtenerLibrosPorTitulo(titulo);
+
+        if(librosBuscados.size() > 0)
+            return Response.ok(librosBuscados).build();
+        else
+            return Response.status(Status.NOT_FOUND).build();
+
     }
 
     @GET
