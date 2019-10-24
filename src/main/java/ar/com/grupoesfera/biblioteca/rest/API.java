@@ -51,14 +51,14 @@ public class API {
     @Produces(MediaType.APPLICATION_JSON)
     public Response obtenerLibrosPorAutor(@PathParam("autor") String autor) {
         
-        return Response.status(Status.NOT_IMPLEMENTED).build();
+        return Response.ok(libros.obtenerLibrosPorAutor(autor)).build();
     }
     @GET
     @Path("/libros/titulo/{titulo}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response obtenerLibrosPorTitulo(@PathParam("titulo") Long titulo) {
+    public Response obtenerLibrosPorTitulo(@PathParam("titulo") String titulo) {
         
-        return Response.status(Status.NOT_IMPLEMENTED).build();
+        return Response.ok(libros.obtenerLibrosPorTitulo(titulo)).build();
     }
 
     @GET
