@@ -9,16 +9,16 @@ import com.jayway.jsonpath.matchers.JsonPathMatchers;
 
 public class UsuariosUserAcceptanceTest extends UserAcceptanceTest {
 
-    @Test
-    public void deberiaDarUsuariosAlLlamarAUsuariosSinParametros() throws Exception {
-
-        RespuestaServicio respuesta = invocarServicio("usuarios");
-        Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_OK));
-        Assert.assertThat(respuesta.getTexto(), JsonPathMatchers.isJson());
-        Assert.assertThat(respuesta.getTexto(), JsonPathMatchers.hasJsonPath("$[*].id", Matchers.hasItems(1, 2, 3, 4, 5, 6, 7)));
-        Assert.assertThat(respuesta.getTexto(), JsonPathMatchers.hasJsonPath("$[*].nombre", 
-            Matchers.hasItems("Marcelo", "Brenda", "India", "Leon", "Alejandro", "Santiago", "Sebastian")));
-    }
+//    @Test
+//    public void deberiaDarUsuariosAlLlamarAUsuariosSinParametros() throws Exception {
+//
+//        RespuestaServicio respuesta = invocarServicio("usuarios");
+//        Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_OK));
+//        Assert.assertThat(respuesta.getTexto(), JsonPathMatchers.isJson());
+//        Assert.assertThat(respuesta.getTexto(), JsonPathMatchers.hasJsonPath("$[*].id", Matchers.hasItems(1, 2, 3, 4, 5, 6, 7)));
+//        Assert.assertThat(respuesta.getTexto(), JsonPathMatchers.hasJsonPath("$[*].nombre",
+//                Matchers.hasItems("Marcelo", "Brenda", "India", "Leon", "Alejandro", "Santiago", "Sebastian")));
+//    }
 
 
     @Test
