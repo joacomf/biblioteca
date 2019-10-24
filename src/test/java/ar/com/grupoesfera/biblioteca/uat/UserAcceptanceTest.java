@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import com.jayway.jsonpath.matchers.JsonPathMatchers;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpStatus;
@@ -127,5 +128,83 @@ public class UserAcceptanceTest {
 
             this.texto = texto;
         }
+    }
+
+        @Test
+    public void deberiaDarUsuariosAlLlamarAUsuariosSinParametros() throws Exception {
+
+        RespuestaServicio respuesta = invocarServicio("usuarios");
+        Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_OK));
+        Assert.assertThat(respuesta.getTexto(), JsonPathMatchers.isJson());
+        Assert.assertThat(respuesta.getTexto(), JsonPathMatchers.hasJsonPath("$[*].id", Matchers.hasItems(1, 2, 3, 4, 5, 6, 7)));
+        Assert.assertThat(respuesta.getTexto(), JsonPathMatchers.hasJsonPath("$[*].nombre",
+                Matchers.hasItems("Marcelo", "Brenda", "India", "Leon", "Alejandro", "Santiago", "Sebastian")));
+    }
+
+
+    @Test
+    public void deberiaDarNotFoundAlLlamarAUsuariosConIdValidoInexistente() throws Exception {
+
+        RespuestaServicio respuesta = invocarServicio("usuarios/1000");
+        Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_NOT_FOUND));
+    }
+
+    @Test
+    public void deberiaDarNotFoundAlLlamarAUsuariosConIdInvalido() throws Exception {
+
+        RespuestaServicio respuesta = invocarServicio("usuarios/id-invalido");
+        Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_NOT_FOUND));
+    }
+
+    @Test
+    public void deberiaDarLaListaDePrestamosDelUsuarioPorId() throws Exception {
+        UserAcceptanceTest.RespuestaServicio respuesta = invocarServicio("usuarios/1/prestamos");
+        Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_OK));
+
+    }
+
+    @Test
+    public void deberiaDarQueNoExistenPrestamosDelUsuarioEspecificado() throws Exception {
+        UserAcceptanceTest.RespuestaServicio respuesta = invocarServicio("/usuarios/1/prestamos");
+        Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_NOT_FOUND));
+    }
+
+    @Test
+    public void deberiaDarOKAlLlamarALibrosConIdValidoExistente() throws Exception {
+
+        RespuestaServicio respuesta = invocarServicio("libros/1");
+        Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_OK));
+    }
+
+    @Test
+    public void deberiaDarOKAlLamarALibrosConAutorExistente() throws Exception {
+
+        RespuestaServicio respuesta = invocarServicio("libros/autor/Kent");
+        Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_OK));
+
+    }
+
+    @Test
+    public void deberiaDarNotFoundAlLlamarALibrosConAutorInexistente() throws Exception {
+
+        RespuestaServicio respuesta = invocarServicio("libros/autor/asd");
+        Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_NOT_FOUND));
+
+    }
+
+    @Test
+    public void deberiaDarOKAlLlamarALibrosConTituloExistente() throws Exception {
+
+        RespuestaServicio respuesta = invocarServicio("libros/titulo/Design");
+        Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_OK));
+
+    }
+
+    @Test
+    public void deberiaDarNotFoundAlLlamarALibrosConTituloInxistente() throws Exception {
+
+        RespuestaServicio respuesta = invocarServicio("libros/titulo/asd");
+        Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_NOT_FOUND));
+
     }
 }
