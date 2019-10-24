@@ -1,6 +1,7 @@
 package ar.com.grupoesfera.biblioteca.repo;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import ar.com.grupoesfera.biblioteca.modelo.Libro;
 import ar.com.grupoesfera.main.App;
@@ -23,5 +24,21 @@ public class BaseDeLibros {
         } else {
             throw new Exception("Libro no encontrado");
         }
+    }
+
+    public List<Libro> obtenerLibrosPorAutor(String autor) {
+        return obtenerTodos()
+                .stream()
+                .filter(l -> l.getAutor()
+                        .contains(autor))
+                .collect(Collectors.toList());
+    }
+
+    public List<Libro> obtenerLibrosPorTitulo (String titulo) {
+        return obtenerTodos()
+                .stream()
+                .filter(l -> l.getTitulo()
+                        .contains(titulo))
+                .collect(Collectors.toList());
     }
 }
