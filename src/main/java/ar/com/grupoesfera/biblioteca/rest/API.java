@@ -48,10 +48,14 @@ public class API {
     @Path("/libros/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response obtenerLibroPorId(@PathParam("id") Long id) {
-        try {
-            return Response.ok(libros.obtenerLibroPorId(id)).build();
-        } catch(Exception e) {
+        Libro libro = libros.obtenerTodos().stream()
+                .filter(l -> l.getId().equals(id) == true)
+                .findFirst()
+                .orElse(null);
+        if(libro == null){
             return Response.status(Status.NOT_FOUND).build();
+        } else {
+            return Response.ok(libro).build();
         }
     }
 
