@@ -1,4 +1,4 @@
-# [![Build Status](https://travis-ci.org/joacomf/biblioteca.svg?branch=master)](https://travis-ci.org/joacomf/biblioteca) biblioteca
+# biblioteca [![Build Status](https://travis-ci.org/joacomf/biblioteca.svg?branch=master)](https://travis-ci.org/joacomf/biblioteca)
 
 Un proyecto para enseñar JPA y REST.
 Hecho en Java, administrado con Maven, persistido con Hibernate (en una base H2) y expuesto con RESTEasy sobre Undertow. 
