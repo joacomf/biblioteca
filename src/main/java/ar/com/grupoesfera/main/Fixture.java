@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import ar.com.grupoesfera.biblioteca.modelo.Prestamo;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -88,6 +89,10 @@ public class Fixture {
         		.conAutor("Jez Humble").conEditorial("IT Revolution Press");
         
         persistirSiEsPosible(entities, continuousDelivery, designPatterns, growingOOSoftware, pojoInAction, tdd, devopsHandbook);
+
+        Prestamo prestamo1 = Prestamo.nuevo().conId(1L).conIdLibro(1L).conIdUsuario(1L);
+        persistirSiEsPosible(entities, prestamo1);
+
     }
     
     private static void persistirSiEsPosible(EntityManager entities, Object... entidades) {
