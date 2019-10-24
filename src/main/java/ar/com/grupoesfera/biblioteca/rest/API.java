@@ -74,7 +74,7 @@ public class API {
     @Produces(MediaType.APPLICATION_JSON)
     public Response obtenerUsuarioPorId(@PathParam("id") Long idUsuario) {
         
-        return Response.status(Status.NOT_IMPLEMENTED).build();
+        return Response.status(Status.NOT_FOUND).build();
     }
 
     @GET
