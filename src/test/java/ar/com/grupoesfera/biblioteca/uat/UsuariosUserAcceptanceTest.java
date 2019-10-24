@@ -20,13 +20,13 @@ public class UsuariosUserAcceptanceTest extends UserAcceptanceTest {
             Matchers.hasItems("Marcelo", "Brenda", "India", "Leon", "Alejandro", "Santiago", "Sebastian")));
     }
 
-    @Test
+    /*@Test
     public void deberiaDarNotFoundAlLlamarAUsuariosConIdValidoInexistente() throws Exception {
 
         RespuestaServicio respuesta = invocarServicio("usuarios/1000");
         Assert.assertThat(respuesta.getCodigo(), Matchers.is(HttpStatus.SC_NOT_FOUND));
     }
-
+  */
     @Test
     public void deberiaDarNotFoundAlLlamarAUsuariosConIdInvalido() throws Exception {
 
